@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link rel="icon" type="image/png" href="/Asset/logomanchot.png" />
+    <link rel="stylesheet" href="index.css">
+    <style>
+        section.Methodology {
+            display: flex;
+            justify-content: space-around;
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        section.Methodology div {
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px;
+            width: 25%;
+            text-align: center;
+        }
+
+        .avatar-button {
+            background: white;
+            border: 4px solid #ddd;
+            border-radius: 20px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-button:hover {
+            transform: scale(1.05);
+            border-color: #4c68af;
+            box-shadow: 0 8px 20px rgba(76, 104, 175, 0.3);
+        }
+
+        .avatar-button.selected {
+            border-color: #4c68af;
+            background: linear-gradient(135deg, #e8f0ff 0%, #d4e4ff 100%);
+            animation: pulse 0.6s ease;
+        }
+
+        .avatar-button img {
+            display: block;
+            width: 120px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .avatar-button::after {
+            content: '✓';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #4c68af;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .avatar-button.selected::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .avatar-button.clicked {
+            animation: bounce 0.5s ease;
+        }
+
+        .avatar-label {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4c68af;
+            font-size: 1.1em;
+        }
+
+        .styled-button {
+            background: linear-gradient(to right, #4c68af, #4a95c3); /* Dégradé vert */
+            color: white; /* Texte en blanc */
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            position: relative; /* Pour l'effet de brillance */
+            overflow: hidden; /* Cache le débordement de l'effet */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+        }
+
+        /* Effet de brillance (shine) */
+        .styled-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.6s;
+        }
+
+        /* Animation au survol */
+        .styled-button:hover {
+            transform: translateY(-3px); /* Soulève le bouton */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+        }
+
+        /* Déclenche l'effet de brillance */
+        .styled-button:hover::before {
+            left: 100%; /* Fait glisser la brillance de gauche à droite */
+        }
+
+        /* Animation quand on clique */
+        .styled-button:active {
+            transform: translateY(1px); /* Effet d'enfoncement */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style du lien */
+        .styled-button a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .selected-avatar-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .selected-avatar-display.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .selected-avatar-display p {
+            color: #4c68af;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="div1" style="text-align:center">
+        <h2>Choisis ton animal</h2>
+
+        <button type="button" class="avatar-button" data-animal="manchot" style>
+                    <img src="/Asset/logomanchottransparent.png" alt="Manchot">
+        </button>
+
+
+        <button type="button" class="avatar-button" data-animal="tortue" style>
+                <img src="/Asset/logotortue.png" alt="Tortue">
+        </button>
+        
+  
+        <div class="selected-avatar-display" id="avatarDisplay">
+            <p>Tu as choisi : <span id="selectedAnimalName"></span></p>
+        </div>
+    </div>
+
+    <div class="div1" style="text-align:center">
+        <h2>Règles du jeu</h2>
+        <p>Voici les règles du jeu</p>
+    </div>
+    <div class="boutton" style="text-align:center">
+        <button type="button" class="styled-button">
+                <a href="/jeu.html">Commencer</a>
+        </button>
+    </div>
+
+    <script>
+        const avatarButtons = document.querySelectorAll('.avatar-button');
+        const startButton = document.getElementById('startButton');
+        const avatarDisplay = document.getElementById('avatarDisplay');
+        const selectedAnimalName = document.getElementById('selectedAnimalName');
+        const startLink = document.getElementById('startLink');
+        
+        let selectedAvatar = null;
+
+        // Gestion de la sélection d'avatar
+        avatarButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const animal = this.dataset.animal;
+                
+                // Animation de clic
+                this.classList.add('clicked');
+                setTimeout(() => this.classList.remove('clicked'), 500);
+                
+                // Retirer la sélection précédente
+                avatarButtons.forEach(btn => btn.classList.remove('selected'));
+                
+                // Ajouter la nouvelle sélection
+                this.classList.add('selected');
+                selectedAvatar = animal;
+                
+                // Afficher l'animal sélectionné
+                const animalNames = {
+                    'manchot': '🐧 Manchot',
+                    'tortue': '🐢 Tortue'
+                };
+                selectedAnimalName.textContent = animalNames[animal];
+                avatarDisplay.classList.add('show');
+                
+                // Activer le bouton de démarrage
+                startButton.disabled = false;
+                
+                // Sauvegarder le choix (en mémoire pour cette session)
+                sessionStorage.setItem('selectedAvatar', animal);
+                
+                // Effet sonore visuel (vibration du bouton)
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 10);
+            });
+        });
+
+        // Vérifier si un avatar était déjà sélectionné
+        const savedAvatar = sessionStorage.getItem('selectedAvatar');
+        if (savedAvatar) {
+            const savedButton = document.querySelector(`[data-animal="${savedAvatar}"]`);
+            if (savedButton) {
+                savedButton.classList.add('selected');
+                selectedAvatar = savedAvatar;
+                startButton.disabled = false;
+                
+                const animalNames = {
+                    'manchot': '🐧 Manchot',
+                    'tortue': '🐢 Tortue'
+                };
+                selectedAnimalName.textContent = animalNames[savedAvatar];
+                avatarDisplay.classList.add('show');
+            }
+        }
+
+        // Animation au clic du bouton Commencer
+        startButton.addEventListener('click', function(e) {
+            if (!this.disabled) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            }
+        });
+    </script>
+</body>
+</html>
