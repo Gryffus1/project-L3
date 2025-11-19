@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link id="favicon" rel="icon" type="image/png" href="/images/images manchots/logomanchot.png" />
+    <link rel="stylesheet" href="index.css">
+    <script defer type="module" src="index.js"></script>
+
+</head>
+<body>
+    <video autoplay loop muted plays-inline class="videodroite">
+        <source src="/images/images tortues/Tortuefond.mp4" type="video/mp4">
+
+    </video>
+    <video autoplay loop muted plays-inline class="videogauche">
+        <source src="/images/images manchots/videoplaybackindex.mp4" type="video/mp4">
+
+    </video>
+
+    <div style="text-align:center">
+        <h1>Choisis ton animal</h1>
+
+        <button type="button" class="avatar-button" data-animal="manchot" style>
+                    <img src="/images/images manchots/logomanchot.png" alt="Manchot">
+        </button>
+
+
+        <button type="button" class="avatar-button" data-animal="tortue" style>
+                <img src="/images/images tortues/turtlegifgauche.png" alt="Tortue">
+        </button>
+        
+  
+        <div class="selected-avatar-display" id="avatarDisplay">
+            <p >Tu as choisi : <span id="selectedAnimalName"></span></p>
+        </div>
+    </div>
+
+    <div class="div1" style="text-align:center">
+        <h2>📜 Règles du jeu</h2>
+        <p class="rules-text">
+            <strong>Objectif :</strong> Deviner une combinaison de quatre couleurs, dont plusieurs peuvent être identiques.<br><br>
+            <strong>Comment jouer :</strong> Proposez une combinaison, puis vérifiez-la.<br>
+            - Le nombre en rouge indique le nombre de couleurs correctes et bien placées.<br>
+            - Le nombre en blanc indique le nombre de couleurs correctes mais mal placées.<br><br>
+            <strong>Exemple :</strong> Si le nombre 2 apparaît en rouge, 2 couleurs sont correctes et bien placées.<br>
+            Si le nombre 2 apparaît en blanc, 2 couleurs sont correctes mais mal placées.<br><br>
+            <strong>Victoire :</strong> Vous gagnez si vous devinez la combinaison secrète avant la fin des essais disponibles.
+        </p>
+    </div>
+    <div class="boutton" style="text-align:center">
+        <button type="button" class="styled-button" id="startButton" disabled>
+            <a id="startLink" href="/MastermindApp/index.html">Commencer</a>
+        </button>
+    </div>  
+</body>
+</html>
