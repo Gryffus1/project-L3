@@ -1,0 +1,353 @@
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 20px 0;
+    color: rgb(227, 226, 228);
+    text-shadow: 1px 1px 2px black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.div1 {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Base menu styles */
+#drop_down_menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+
+    position: absolute;
+    top: 50px;            
+    right: 10px;          
+    width: 180px;  
+  
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+
+ /* Video */
+.contenair{
+    width : 100%;
+    height: 100hv;
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video {
+    position: fixed; /* Remplace `absolute` par `fixed` pour couvrir toute la fenêtre */
+    top: 0;
+    left: 0;
+    width: 100%; /* Largeur à 100% de l'écran */
+    height: 100%; /* Hauteur à 100% de l'écran */
+    object-fit: cover; /* Étire la vidéo pour couvrir tout l'espace (peut couper les bords) */
+    z-index: -1; /* Place la vidéo derrière le contenu */
+    min-width: 100%; /* Assure que la vidéo couvre toute la largeur */
+    min-height: 100%; /* Assure que la vidéo couvre toute la hauteur */
+}
+
+.videodroite {
+    position: fixed;
+    top: 0;
+    right: 0; /* Aligne la vidéo à droite */
+    width: 50%; /* Largeur de 50% de l'écran */
+    height: 100%; /* Hauteur de 100% de l'écran */
+    object-fit: cover; /* Étire la vidéo pour couvrir l'espace */
+    z-index: -1; /* Place la vidéo derrière le contenu */
+}
+
+.videogauche {
+    position: fixed;
+    top: 0;
+    left: 0; /* Aligne la vidéo à gauche */
+    width: 50%; /* Largeur de 50% de l'écran */
+    height: 100%; /* Hauteur de 100% de l'écran */
+    object-fit: cover; /* Étire la vidéo pour couvrir l'espace */
+    z-index: -1; /* Place la vidéo derrière le contenu */
+}
+
+/* Container pour la vidéo d'arrière-plan */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Overlay sombre optionnel pour améliorer la lisibilité */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #7F7FD5;
+    background: radial-gradient(circle,rgba(127, 127, 213, 1) 0%, rgba(134, 168, 231, 1) 50%, rgba(145, 234, 228, 1) 100%);
+}
+
+/* Contenu par-dessus la vidéo */
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.content p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.btn:hover {
+    background: #7F7FD5;
+    background: radial-gradient(circle,rgba(127, 127, 213, 1) 0%, rgba(134, 168, 231, 1) 50%, rgba(145, 234, 228, 1) 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.5rem;
+    }
+    .content p {
+        font-size: 1.2rem;
+    }
+}
+
+section.Methodology {
+    display: flex;
+    justify-content: space-around;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+section.Methodology div {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+}
+
+/*Bouton bleu*/
+.styled-button {
+    background: linear-gradient(to right, #4c68af, #4a95c3); /* Dégradé vert */
+    color: white; /* Texte en blanc */
+    padding: 16px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 6px 4px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    position: relative; /* Pour l'effet de brillance */
+    overflow: hidden; /* Cache le débordement de l'effet */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+/* Effet de brillance (shine) */
+.styled-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.6s;
+}
+
+/* Animation au survol */
+.styled-button:hover {
+    transform: translateY(-3px); /* Soulève le bouton */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+/* Déclenche l'effet de brillance */
+.styled-button:hover::before {
+    left: 100%; /* Fait glisser la brillance de gauche à droite */
+}
+
+/* Animation quand on clique */
+.styled-button:active {
+    transform: translateY(1px); /* Effet d'enfoncement */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du lien */
+.styled-button a {
+    color: white;
+    text-decoration: none;
+}
+
+/*Avatar*/
+
+.avatar-button {
+    background: white;
+    border: 4px solid #ddd;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-button:hover {
+    transform: scale(1.05);
+    border-color: #4c68af;
+    box-shadow: 0 8px 20px rgba(76, 104, 175, 0.3);
+}
+
+.avatar-button.selected {
+    border-color: #4c68af;
+    background: linear-gradient(135deg, #e8f0ff 0%, #d4e4ff 100%);
+    animation: pulse 0.6s ease;
+}
+
+.avatar-button img {
+    display: block;
+    width: 120px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.avatar-button::after {
+    content: '✓';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #4c68af;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.avatar-button.selected::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.avatar-button.clicked {
+    animation: bounce 0.5s ease;
+}
+
+.avatar-label {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4c68af;
+    font-size: 1.1em;
+}
+
+.selected-avatar-display {
+    margin: 30px auto;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: fit-content;
+}
+
+.selected-avatar-display.show {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.selected-avatar-display p {
+    color: #4c68af;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#startButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid gray;
+}
